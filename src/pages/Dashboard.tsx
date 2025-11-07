@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, ArrowDownRight, History, LogOut, Wallet } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight, History, LogOut, Wallet, CreditCard, Send, FileText, TrendingUp, PieChart, Bell, HelpCircle, User } from "lucide-react";
 
 interface Transaction {
   id: string;
@@ -77,7 +77,7 @@ const Dashboard = () => {
         </Card>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <Button
             onClick={() => navigate("/deposit")}
             className="h-24 glass-card hover:bg-success/20 hover:border-success/50 transition-all group"
@@ -85,7 +85,7 @@ const Dashboard = () => {
           >
             <div className="flex flex-col items-center gap-2">
               <ArrowDownRight className="h-6 w-6 text-success group-hover:scale-110 transition-transform" />
-              <span className="text-lg font-semibold">Deposit</span>
+              <span className="text-sm font-semibold">Deposit</span>
             </div>
           </Button>
           <Button
@@ -95,20 +95,111 @@ const Dashboard = () => {
           >
             <div className="flex flex-col items-center gap-2">
               <ArrowUpRight className="h-6 w-6 text-destructive group-hover:scale-110 transition-transform" />
-              <span className="text-lg font-semibold">Withdraw</span>
+              <span className="text-sm font-semibold">Withdraw</span>
             </div>
           </Button>
           <Button
-            onClick={() => navigate("/history")}
+            onClick={() => navigate("/transfer")}
             className="h-24 glass-card hover:bg-primary/20 hover:border-primary/50 transition-all group"
             variant="outline"
           >
             <div className="flex flex-col items-center gap-2">
-              <History className="h-6 w-6 text-primary group-hover:scale-110 transition-transform" />
-              <span className="text-lg font-semibold">History</span>
+              <Send className="h-6 w-6 text-primary group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-semibold">Transfer</span>
+            </div>
+          </Button>
+          <Button
+            onClick={() => navigate("/history")}
+            className="h-24 glass-card hover:bg-accent/20 hover:border-accent/50 transition-all group"
+            variant="outline"
+          >
+            <div className="flex flex-col items-center gap-2">
+              <History className="h-6 w-6 text-accent group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-semibold">History</span>
             </div>
           </Button>
         </div>
+
+        {/* More Services */}
+        <Card className="glass-card">
+          <CardHeader>
+            <CardTitle>More Services</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <Button
+                onClick={() => navigate("/cards")}
+                className="h-20 glass-card hover:bg-muted/50 transition-all"
+                variant="outline"
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <CreditCard className="h-5 w-5" />
+                  <span className="text-xs">Cards</span>
+                </div>
+              </Button>
+              <Button
+                onClick={() => navigate("/bills")}
+                className="h-20 glass-card hover:bg-muted/50 transition-all"
+                variant="outline"
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <FileText className="h-5 w-5" />
+                  <span className="text-xs">Bills</span>
+                </div>
+              </Button>
+              <Button
+                onClick={() => navigate("/loans")}
+                className="h-20 glass-card hover:bg-muted/50 transition-all"
+                variant="outline"
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <TrendingUp className="h-5 w-5" />
+                  <span className="text-xs">Loans</span>
+                </div>
+              </Button>
+              <Button
+                onClick={() => navigate("/investments")}
+                className="h-20 glass-card hover:bg-muted/50 transition-all"
+                variant="outline"
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <PieChart className="h-5 w-5" />
+                  <span className="text-xs">Invest</span>
+                </div>
+              </Button>
+              <Button
+                onClick={() => navigate("/notifications")}
+                className="h-20 glass-card hover:bg-muted/50 transition-all"
+                variant="outline"
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <Bell className="h-5 w-5" />
+                  <span className="text-xs">Alerts</span>
+                </div>
+              </Button>
+              <Button
+                onClick={() => navigate("/profile")}
+                className="h-20 glass-card hover:bg-muted/50 transition-all"
+                variant="outline"
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <User className="h-5 w-5" />
+                  <span className="text-xs">Profile</span>
+                </div>
+              </Button>
+              <Button
+                onClick={() => navigate("/support")}
+                className="h-20 glass-card hover:bg-muted/50 transition-all"
+                variant="outline"
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <HelpCircle className="h-5 w-5" />
+                  <span className="text-xs">Support</span>
+                </div>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Recent Transactions */}
         <Card className="glass-card">
